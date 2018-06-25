@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  onDragStart(event: PointerEvent): void {
+    console.log(event);
+  }
+
+  onDragMove(event: PointerEvent): void {
+    console.log(event);
+  }
+
+  onDragEnd(event: PointerEvent): void {
+    console.log(event);
+  }
 }

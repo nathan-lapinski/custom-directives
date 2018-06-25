@@ -1,4 +1,4 @@
-import { Directive, OnInit, HostListener, HostBinding, Host, Input } from '@angular/core';
+import { Directive, OnInit, HostListener, HostBinding, Host, Input, ElementRef } from '@angular/core';
 import { DraggableDirective } from './draggable.directive';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 
@@ -19,7 +19,7 @@ export class MovableDirective extends DraggableDirective {
 
   @HostBinding('class.movable') movable = true;
 
-  private position: Position = { x: 0, y: 0};
+  public position: Position = { x: 0, y: 0};
   private startPosition: Position;
   @Input('appMovableReset') reset = false;
 
@@ -44,7 +44,9 @@ export class MovableDirective extends DraggableDirective {
     }
   }
 
-  constructor(private sanitizer: DomSanitizer) {
+  // TODO: Is exposing a public element ref poor practice?
+  constructor(private sanitizer: DomSanitizer,
+              public element: ElementRef) {
     super();
   }
 }

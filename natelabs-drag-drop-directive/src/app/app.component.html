@@ -17,3 +17,12 @@
     Movable
   </div>
 </div>
+
+<h1>Part 3 - movable area</h1>
+<div class="area" appMovableArea>
+  <div class="box" appMovable *ngFor="let trapped of trappedBoxes">
+    {{trapped}}
+  </div>
+</div>
+
+<button (click)="add()">Add</button>

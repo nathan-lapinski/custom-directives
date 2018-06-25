@@ -9,3 +9,8 @@
 .box.dragging {
     background: coral;
 }
+
+.area {
+    background: #C0FEEE;
+    padding: 40px;
+}

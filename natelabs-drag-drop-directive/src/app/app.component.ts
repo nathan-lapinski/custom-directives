@@ -6,15 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  onDragStart(event: PointerEvent): void {
-    console.log(event);
-  }
 
-  onDragMove(event: PointerEvent): void {
-    console.log(event);
-  }
+  public trappedBoxes: string[] = [
+    'Trapped 1',
+    'Trapped 2'
+  ];
 
-  onDragEnd(event: PointerEvent): void {
-    console.log(event);
+  private counter = 3;
+
+  add(): void {
+    this.trappedBoxes.push('Trapped ' + this.counter++);
   }
 }

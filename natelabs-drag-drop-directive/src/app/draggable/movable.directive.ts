@@ -1,4 +1,4 @@
-import { Directive, OnInit, HostListener, HostBinding, Host } from '@angular/core';
+import { Directive, OnInit, HostListener, HostBinding, Host, Input } from '@angular/core';
 import { DraggableDirective } from './draggable.directive';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 
@@ -21,7 +21,7 @@ export class MovableDirective extends DraggableDirective {
 
   private position: Position = { x: 0, y: 0};
   private startPosition: Position;
-  private reset = true;
+  @Input('appMovableReset') reset = false;
 
   @HostListener('dragStart', ['$event'])
   onDragStart(event: PointerEvent) {

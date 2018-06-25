@@ -10,5 +10,10 @@
 
 <h1>Part 2 - movable</h1>
 <div class="box" appMovable>
-  Movable
+  <div class="box" appMovable>
+    Movable
+  </div>
+  <div class="box" appMovable [appMovableReset]="true">
+    Movable
+  </div>
 </div>

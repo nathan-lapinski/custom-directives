@@ -1,13 +1,14 @@
 <div>Draggable One</div>
 
+<h1>Part 1 - draggable</h1>
+
 <div class="box" appDraggable
   (dragStart)="onDragStart($event)"
   (dragMove)="onDragMove($event)"
   (dragEnd)="onDragEnd($event)"
->Box 1</div>
+>Draggable</div>
 
-<div class="box" appDraggableRx
-  (dragStart)="onDragStart($event)"
-  (dragMove)="onDragMove($event)"
-  (dragEnd)="onDragEnd($event)"
->Box 2</div>
+<h1>Part 2 - movable</h1>
+<div class="box" appMovable>
+  Movable
+</div>

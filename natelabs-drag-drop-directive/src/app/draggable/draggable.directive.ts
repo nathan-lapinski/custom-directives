@@ -1,4 +1,5 @@
-import { Directive, HostBinding, HostListener, EventEmitter, Output } from '@angular/core';
+import { Directive, HostBinding, HostListener, EventEmitter, Output, Input, TemplateRef, ViewContainerRef, ContentChild, QueryList } from '@angular/core';
+import { DraggableHelperDirective } from './draggable-helper.directive';
 
 @Directive({
   selector: '[appDraggable]'
@@ -11,13 +12,18 @@ export class DraggableDirective {
   @Output() dragMove = new EventEmitter<PointerEvent>();
   @Output() dragEnd = new EventEmitter<PointerEvent>();
 
-  //private dragging = false;
+  @ContentChild(DraggableHelperDirective) helper: DraggableHelperDirective;
+
+  constructor(private viewContainerRef: ViewContainerRef) {}
 
   @HostListener('pointerdown', ['$event'])
   onPointerDown(event: PointerEvent): void {
     this.dragging = true;
     event.stopPropagation();
     this.dragStart.emit(event);
+
+    // render helper template on drag start
+    this.viewContainerRef.createEmbeddedView(this.helper.templateRef);
   }
 
   @HostListener('document:pointermove', ['$event'])
@@ -31,7 +37,9 @@ export class DraggableDirective {
   onPointerUp(event: PointerEvent): void {
     if (this.dragging) {
       this.dragEnd.emit(event);
-      this.dragging = false
+      this.dragging = false;
+      // remove the helper
+      this.viewContainerRef.clear();
     }
   }
 

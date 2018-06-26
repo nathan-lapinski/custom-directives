@@ -2,11 +2,7 @@
 
 <h1>Part 1 - draggable</h1>
 
-<div class="box" appDraggable
-  (dragStart)="onDragStart($event)"
-  (dragMove)="onDragMove($event)"
-  (dragEnd)="onDragEnd($event)"
->Draggable</div>
+<div class="box" appDraggable>Draggable</div>
 
 <h1>Part 2 - movable</h1>
 <div class="box" appMovable>
@@ -26,3 +22,13 @@
 </div>
 
 <button (click)="add()">Add</button>
+
+<h1>Part 4 - draggable helper</h1>
+
+<div class="box" appDraggable>
+  Drag me!
+
+  <div class="box helper" *appDraggableHelper>
+    Dragging...
+  </div>
+</div>
